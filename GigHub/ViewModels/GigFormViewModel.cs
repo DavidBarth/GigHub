@@ -14,7 +14,7 @@ namespace GigHub.ViewModels
         public string Time { get; set; }
 
         //in the dropdown we need the numeric value of the genre
-        public int Genre { get; set; }
+        public byte Genre { get; set; }
         //using IEnumerable IF for general simple query for view 
         //to get a list of options of genres in view
         //new SelectList(Model.Genres, "Id", "Name")

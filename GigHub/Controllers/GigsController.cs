@@ -35,19 +35,15 @@ namespace GigHub.Controllers
         public ActionResult Create(GigFormViewModel viewModel)
         {
             //get application user objects from the database
-            var artistId = User.Identity.GetUserId();//extracted from lambda expresssion as EF cant translate expression object and cant convert to SQL, value stored in artistId
-            var artist = _context.Users.Single(u => u.Id == artistId);//retun an application userr that can be associated with this gig
-
-            //the genre what we have in viewmodel is an integer and that the value of the currently selected option
-            var genre = _context.Genres.Single(g => g.Id == viewModel.Genre);
-
-            
+             
+           
+                        
             var gig = new Gig
             {
-                Artist = artist,
+                ArtistId = User.Identity.GetUserId(),
                 //combining date and time into a datetime object for gig's property
                 DateTime = DateTime.Parse(string.Format("{0} {1}", viewModel.Date, viewModel.Time)),
-                Genre = genre,
+                GenreId = viewModel.Genre,
                 Venue = viewModel.Venue
             };
 
