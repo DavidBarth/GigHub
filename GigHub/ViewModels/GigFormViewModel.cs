@@ -1,8 +1,5 @@
 ﻿using GigHub.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace GigHub.ViewModels
 {
@@ -13,6 +10,7 @@ namespace GigHub.ViewModels
         public string Time { get; set; }
 
         public Genre Genre { get; set; }
+
         //using IEnumerable IF for general simple query for view
         public IEnumerable<Genre> Genres { get; set; }
     }
