@@ -15,6 +15,7 @@ namespace GigHub.Models
         public string ArtistId { get; set; }
         public ApplicationUser Artist { get; set; }
 
+
         public DateTime DateTime { get; set; }
 
         [Required]
