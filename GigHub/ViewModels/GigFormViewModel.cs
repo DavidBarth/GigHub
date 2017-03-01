@@ -14,9 +14,11 @@ namespace GigHub.ViewModels
         //using the following two attributes we can separate 
         //date and time in the view
         [Required]
+        [FutureDate] //data annotation class defined in viewmodels.futurdate
         public string Date { get; set; }
 
         [Required]
+        [ValidTime]
         public string Time { get; set; }
 
         //in the dropdown we need the numeric value of the genre
