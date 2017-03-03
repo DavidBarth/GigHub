@@ -28,6 +28,7 @@ namespace GigHub.Controllers
             return View(viewModel);
         }
 
+        [ValidateAntiForgeryToken] //CSRF attack prevention cannot create a gig without having a valid antiforgert token
         [Authorize]
         [HttpPost] //action called only by a POST method
         //convert viewmodel into a gig object add to context and save changes
