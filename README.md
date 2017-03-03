@@ -3,6 +3,20 @@
 # developed in spare time
 
 C# ASP.NET MVC 5 
-Code first approach with Entity Framework
-Separation of UI and app domain using ViewModel
-Validation with data annotations
+Course itinerary: 
+- Extracting use cases
+- Planning first iteration
+- Building a Model using Code-frist workflow
+- Building a form with Bootstrap
+- Saving data : 
+  authentication
+  refactoring for better separation of concerns
+- Implementing validation:
+  Custom server-side validation for data and time
+  Enabling client-side validation
+- Preventing Common Web Application vulnerabilites
+  SQL injection
+  XSS
+  Preventing CSRF Attacks
+- Usability Best practices
+- Extending ASP.NET Identity Users
