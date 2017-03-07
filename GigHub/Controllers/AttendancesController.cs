@@ -1,15 +1,17 @@
 ﻿using GigHub.Models;
 using Microsoft.AspNet.Identity;
+using System.Linq;
 using System.Web.Http;
 
 namespace GigHub.Controllers
 {
+
     [Authorize]
-    public class AttendencesController : ApiController
+    public class AttendancesController : ApiController
     {
         private ApplicationDbContext _context;
 
-        public AttendencesController()
+        public AttendancesController()
         {
             _context = new ApplicationDbContext();
         }
@@ -17,10 +19,17 @@ namespace GigHub.Controllers
         [HttpPost]
         public IHttpActionResult Attend([FromBody] int gigId)
         {
+            
+            var userId = User.Identity.GetUserId();
+            //check for duplicates
+            if (_context.Attendances.Any(a => a.AttendeeId == userId && a.GigId == gigId))
+            {
+                return BadRequest("Attendance already exists.");
+            }
             var attendance = new Attendance
             {
                 GigId = gigId,
-                AttendeeId = User.Identity.GetUserId()
+                AttendeeId = userId
             };
 
             _context.Attendances.Add(attendance);

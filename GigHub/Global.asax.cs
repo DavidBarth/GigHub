@@ -11,12 +11,14 @@ namespace GigHub
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //when creating a WEB API controller this line should be added
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            //when creating a WEB API controller this line should be added
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            
+         
         }
     }
 }

@@ -46,7 +46,7 @@ textarea {
 
 .gigs > li .date {
     background: burlywood;
-    width: 60px;
+    width:60px;
     text-align: center;
     -ms-border-radius: 8px;
     border-radius: 8px;
@@ -76,4 +76,11 @@ textarea {
     
 }
 
+.gigs > li .details .btn {
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    
+        
+}
 

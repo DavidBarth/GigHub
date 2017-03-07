@@ -20,3 +20,4 @@ Course itinerary:
   Preventing CSRF Attacks
 - Usability Best practices
 - Extending ASP.NET Identity Users
+- Implementing RESTful Web API
