@@ -1,9 +1,10 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.ComponentModel.DataAnnotations;
 
 namespace GigHub.Models
 {
@@ -14,6 +15,16 @@ namespace GigHub.Models
         [StringLength(100)]
         public string Name { get; set; }
 
+        public ICollection<Following> Followers { get; set; }
+        public ICollection<Following> Followee { get; set; }
+
+        public ApplicationUser()
+        {
+            //rule of thumb if you have collection as properties initialize them in constructor as it's the class's responsibility
+           Followers = new Collection<Following>();
+           Followee = new Collection<Following>();
+            
+        }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
