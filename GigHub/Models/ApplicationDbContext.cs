@@ -15,6 +15,7 @@ namespace GigHub.Models
         //to query attendances
         public  DbSet<Attendance> Attendances { get; set; }
 
+        public DbSet<Following> Followings { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -38,6 +39,18 @@ namespace GigHub.Models
                 .WithMany() // reverse direction
                 .WillCascadeOnDelete(false);
 
+            //an app user has many followers and each follower has required followee
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Followers)
+                .WithRequired(f => f.Followee)
+                .WillCascadeOnDelete(false);
+
+
+            //has many followees and has req follower
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Followee)
+                .WithRequired(f => f.Follower)
+                .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
         }

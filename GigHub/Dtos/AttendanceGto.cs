@@ -1,4 +1,4 @@
-﻿namespace GigHub.Gtos
+﻿namespace GigHub.Dtos
 {
     public class AttendanceGto
     {
