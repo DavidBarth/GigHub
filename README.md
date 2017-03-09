@@ -8,6 +8,7 @@ Course itinerary:
 - Planning first iteration
 - Building a Model using Code-frist workflow
 - Building a form with Bootstrap
+- LINQ
 - Saving data : 
   authentication
   refactoring for better separation of concerns
