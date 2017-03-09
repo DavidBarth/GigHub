@@ -7,6 +7,8 @@ Course itinerary:
 - Extracting use cases
 - Planning first iteration
 - Building a Model using Code-frist workflow
+- LINQ
+- DRY principle
 - Building a form with Bootstrap
 - Saving data : 
   authentication
