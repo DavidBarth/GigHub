@@ -1,6 +1,7 @@
 ﻿using GigHub.Models;
 using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -27,6 +28,29 @@ namespace GigHub.Controllers
 
             return View(viewModel);
         }
+
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var gigs = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Gig)
+                .Include(a =>a.Artist)
+                .Include(g => g.Genre)
+                .ToList();
+
+            //view in Gifs/Attending requires a GigsViewModel
+            var viewModel = new GigsViewModel()
+            {
+                UpcomingGis = gigs,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Gigs I'm going to"
+            };
+
+            return View("Gigs", viewModel);
+        }
+
 
         [ValidateAntiForgeryToken] //CSRF attack prevention cannot create a gig without having a valid antiforgert token
         [Authorize]
